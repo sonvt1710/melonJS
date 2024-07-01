@@ -1,5 +1,5 @@
 import { createCanvas } from "../video.js";
-import { setPrefixed } from "../../utils/agent.js";
+import { setPrefixed } from "../../utils/agent.ts";
 import { clamp } from "../../math/math.js";
 
 /**
@@ -96,14 +96,13 @@ class CanvasRenderTarget {
 		 * the canvas created for this CanvasRenderTarget
 		 * @type {HTMLCanvasElement|OffscreenCanvas}
 		 */
-		this.canvas;
+		// this.canvas;
 
 		/**
 		 * the rendering context of this CanvasRenderTarget
 		 * @type {CanvasRenderingContext2D|WebGLRenderingContext}
 		 */
-		this.context;
-
+		// this.context;
 		// clean up the given attributes
 		this.attributes = Object.assign({}, defaultAttributes, attributes);
 

@@ -1,5 +1,5 @@
 // ES5/ES6 polyfills
-import "./polyfill/index.js";
+import "./polyfill/index.ts";
 
 // class definition
 import Color from "./math/color.js";
@@ -18,7 +18,7 @@ import RoundRect from "./geometries/roundrect.js";
 import QuadTree from "./physics/quadtree.js";
 import Body from "./physics/body.js";
 import Bounds from "./physics/bounds.js";
-import Tween from "./tweens/tween.js";
+import Tween from "./tweens/tween.ts";
 import GLShader from "./video/webgl/glshader.js";
 import Compositor from "./video/webgl/compositors/compositor.js";
 import PrimitiveCompositor from "./video/webgl/compositors/primitive_compositor.js";
@@ -73,21 +73,17 @@ import * as event from "./system/event.js";
 import * as device from "./system/device.js";
 import * as loader from "./loader/loader.js";
 import * as Math from "./math/math.js";
-import * as utils from "./utils/utils.js";
+import * as utils from "./utils/utils.ts";
 import * as input from "./input/input.js";
 import * as plugin from "./plugin/plugin.js";
 import { cache as plugins } from "./plugin/plugin.js";
 import * as video from "./video/video.js";
 import save from "./system/save.js";
-import timer from "./system/timer.js";
+import timer from "./system/timer.ts";
 import pool from "./system/pooling.js";
 import state from "./state/state.js";
 import level from "./level/level.js";
-
-/**
- * current melonJS version
- */
-export const version = "__VERSION__";
+import { version } from "./version.ts";
 
 const math = Math;
 
@@ -113,6 +109,7 @@ export {
 	pool,
 	state,
 	video,
+	version,
 };
 
 // export all class definition
@@ -186,7 +183,7 @@ export {
 export * from "./lang/deprecated.js";
 
 // export all public constants
-export * from "./const.js";
+export * from "./const.ts";
 
 /**
  * a flag indicating that melonJS is fully initialized
@@ -199,10 +196,9 @@ export let initialized = false;
 /**
  * disable melonJS auto-initialization
  * @type {boolean}
- * @default false
  * @see boot
  */
-export let skipAutoInit = false; // eslint-disable-line prefer-const
+export let skipAutoInit = false;
 
 /**
  * game is a default instance of a melonJS Application and represents your current game,

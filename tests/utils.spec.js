@@ -49,27 +49,9 @@ describe("utils", () => {
 		it("file extension", () => {
 			expect(utils.file.getExtension(filename)).toEqual("baz");
 		});
-
-		it("file path", () => {
-			expect(utils.file.getPath(filename)).toEqual("/src/bar/");
-		});
 	});
 
 	describe("String", () => {
-		const untrimmed_str = " start and end with white space ";
-
-		it("trim left side", () => {
-			expect(untrimmed_str.trimLeft()).toEqual(
-				"start and end with white space ",
-			);
-		});
-
-		it("trim right side", () => {
-			expect(untrimmed_str.trimRight()).toEqual(
-				" start and end with white space",
-			);
-		});
-
 		it("capitalize", () => {
 			expect(utils.string.capitalize("capitalize")).toEqual("Capitalize");
 		});

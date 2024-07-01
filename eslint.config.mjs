@@ -3,12 +3,15 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import eslint from "@eslint/js";
 
+const jsDocConfig = jsdoc.configs["flat/recommended-typescript-error"];
+
 export default tseslint.config(
 	eslint.configs.recommended,
+	...tseslint.configs.recommended,
 	{
 		name: "eslint/global-ignores",
 		// globally ignore below directories and files
-		ignores: ["dist/**/*", "build/**/*", "docs/**/*", "rollup.config.mjs"],
+		ignores: ["build", "docs/**/*", "rollup.config.mjs", "scripts/build.js"],
 	},
 	{
 		name: "eslint/global-rules",
@@ -19,7 +22,7 @@ export default tseslint.config(
 				...globals.browser,
 			},
 		},
-		files: ["src/**/*.js", "tests/**/*.js"],
+		files: ["src/**/*.js", "src/**/*.ts", "tests/**/*.js"],
 		plugins: {
 			jsdoc,
 		},
@@ -60,10 +63,7 @@ export default tseslint.config(
 			"no-labels": ["error", { allowLoop: false, allowSwitch: false }],
 			"no-lone-blocks": "error",
 			"no-loss-of-precision": "error",
-			"no-mixed-spaces-and-tabs": "error",
-			"no-multi-spaces": ["off", { ignoreEOLComments: true }],
 			"no-multi-str": "error",
-			"no-multiple-empty-lines": ["off", { max: 1 }],
 			"no-native-reassign": "error",
 			"no-negated-in-lhs": "error",
 			"no-new": "error",
@@ -140,6 +140,16 @@ export default tseslint.config(
 			yoda: ["error", "never"],
 			"jsdoc/require-hyphen-before-param-description": "error",
 			"jsdoc/no-undefined-types": "off",
+		},
+	},
+	{
+		...jsDocConfig,
+		files: ["**/*.{ts,tsx,mts,cts}"],
+		rules: {
+			"no-undef": "off",
+			"no-unused-vars": "off",
+			"@typescript-eslint/no-explicit-any": "off",
+			...jsDocConfig.rules,
 		},
 	},
 );
